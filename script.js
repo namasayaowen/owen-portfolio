@@ -1,4 +1,3 @@
-
 // ==============================
 // 1. MOBILE NAVIGATION
 // ==============================
@@ -38,6 +37,12 @@ if (menuToggle && navLinks) {
 // 2. SCROLL REVEAL ANIMATION
 // ==============================
 
+
+// ==============================
+// 2. SCROLL REVEAL ANIMATION
+// REPEAT EVERY TIME ELEMENT ENTERS VIEW
+// ==============================
+
 const revealElements = document.querySelectorAll(".reveal");
 
 const reduceMotion = window.matchMedia(
@@ -47,13 +52,20 @@ const reduceMotion = window.matchMedia(
 if ("IntersectionObserver" in window && !reduceMotion) {
 
     const revealObserver = new IntersectionObserver(
-        (entries, observer) => {
+        (entries) => {
 
             entries.forEach(entry => {
 
                 if (entry.isIntersecting) {
+
+                    // Show animation
                     entry.target.classList.add("active");
-                    observer.unobserve(entry.target);
+
+                } else {
+
+                    // Reset animation when leaving screen
+                    entry.target.classList.remove("active");
+
                 }
 
             });
@@ -76,6 +88,7 @@ if ("IntersectionObserver" in window && !reduceMotion) {
     });
 
 }
+
 
 
 // ==============================
