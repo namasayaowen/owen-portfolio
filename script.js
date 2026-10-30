@@ -37,12 +37,6 @@ if (menuToggle && navLinks) {
 // 2. SCROLL REVEAL ANIMATION
 // ==============================
 
-
-// ==============================
-// 2. SCROLL REVEAL ANIMATION
-// REPEAT EVERY TIME ELEMENT ENTERS VIEW
-// ==============================
-
 const revealElements = document.querySelectorAll(".reveal");
 
 const reduceMotion = window.matchMedia(
@@ -53,23 +47,13 @@ if ("IntersectionObserver" in window && !reduceMotion) {
 
     const revealObserver = new IntersectionObserver(
         (entries) => {
-
             entries.forEach(entry => {
-
                 if (entry.isIntersecting) {
-
-                    // Show animation
                     entry.target.classList.add("active");
-
                 } else {
-
-                    // Reset animation when leaving screen
                     entry.target.classList.remove("active");
-
                 }
-
             });
-
         },
         {
             threshold: 0.12,
@@ -82,11 +66,9 @@ if ("IntersectionObserver" in window && !reduceMotion) {
     });
 
 } else {
-
     revealElements.forEach(element => {
         element.classList.add("active");
     });
-
 }
 
 
